@@ -9,7 +9,8 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv() # take environment variables from .env.
-api_key = os.environ.get("hg_api_key")
+api_key = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
+assert api_key is not None
 
 API_URL = "https://api-inference.huggingface.co/models/"
 MODEL = "bigscience/bloom"
@@ -27,7 +28,7 @@ def main(firstinput):
     if firstinput != "":
         res = get_response(firstinput)
     while True:
-        user_input = input("> ").strip()
+        user_input = input(f"{MODEL}> ").strip()
         if user_input in ["quit", "exit", "bye"]:
             break
         if user_input in ["reset"]:
