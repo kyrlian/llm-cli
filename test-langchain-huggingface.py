@@ -10,10 +10,9 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv() # take environment variables from .env.
-hg_api_key = os.environ.get("hg_api_key")
-
 #hg libs expects HUGGINGFACEHUB_API_TOKEN
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = hg_api_key
+hg_api_key = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
+assert hg_api_key is not None
 
 repo_id = "google/flan-t5-xl" # See https://huggingface.co/models?pipeline_tag=text-generation&sort=downloads for some other options
 
