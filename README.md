@@ -13,5 +13,8 @@ Old:
 - [openAI API cli using requests](./old/openaicli.py)
 
 Ressources:
+- [langchain - getting started](https://python.langchain.com/en/latest/modules/models/llms/getting_started.html)
+- [HuggingFace text-generation models](https://huggingface.co/models?pipeline_tag=text-generation)
+- [HuggingFace text2text-generation models](https://huggingface.co/models?pipeline_tag=text2text-generation)
 - [Stable LM](https://github.com/Stability-AI/StableLM)
 - [Stable LM on HugginFace](https://huggingface.co/stabilityai/stablelm-tuned-alpha-7b)
