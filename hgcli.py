@@ -21,8 +21,10 @@ def get_response(llm, input):
 
 
 def main(firstinput):
+    # init llm
     model_id = "bigscience/bloom"
     llm = initllm(model_id)
+    # input-generate loop
     res = ""
     if firstinput != "":
         res = get_response(llm, firstinput)
