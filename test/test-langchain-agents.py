@@ -3,18 +3,15 @@
 # pip install langchain
 
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 from langchain.llms import HuggingFaceHub
 
 #init hg api key
-load_dotenv() # take environment variables from .env.
-hg_api_key = os.environ.get("hg_api_key")
-
-#hg libs expects HUGGINGFACEHUB_API_TOKEN
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = hg_api_key
+load_dotenv(find_dotenv())  # take environment variables from .env.
+assert os.environ.get("HUGGINGFACEHUB_API_TOKEN") is not None
 
 #First, let’s load the language model we’re going to use to control the agent.
 
