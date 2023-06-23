@@ -4,6 +4,7 @@ Display a prompt for the user to type text, and when the user types enter, send 
 Loop until the user types 'quit' or 'exit' or 'bye'.
 
 - [command line version: hgcli.py](./hgcli.py)
+- [tkinter version to edit full prompt](./hgcli-tkinter.py) (requires tkinter)
 - [curses version to edit full prompt](./hgcli-curses.py)
 - [run stable LM localy](./test/test-local-stable-lm.py)
 - [various tests](./test/)
