@@ -1,17 +1,12 @@
 #!pyhon3
 
-from langchain.llms import HuggingFaceHub
-import os
 import sys
-from dotenv import load_dotenv, find_dotenv
 import tkinter as tk
-load_dotenv(find_dotenv())  # take environment variables from .env.
-assert os.environ.get("HUGGINGFACEHUB_API_TOKEN") is not None
-
-langchain_model = HuggingFaceHub(repo_id="bigscience/bloom", model_kwargs={"temperature": 0.1, "max_length": 64})
+from engine_hg import hg_engine
 
 class CliWindow(tk.Frame):
     def __init__(self, parent, initialprompt):
+        self.model = hg_engine()
         tk.Frame.__init__(self, parent)
         self.textboxprompt = tk.Text(self, width=50, height=5)
         self.textboxprompt.pack(expand=True, fill=tk.BOTH)
@@ -34,17 +29,14 @@ class CliWindow(tk.Frame):
         prompt = self.textboxprompt.get("1.0", tk.END).strip()
         if len(prompt) > 0:
             print(f"prompt:{prompt}")
-            answer = langchain_model(prompt)
+            answer = self.model.generate(prompt)
             print(f"answer:{answer}")
             self.textboxprompt.insert(tk.END, "\n" + answer)
 
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    initialprompt = ""
-    if len(args) > 0:
-        initialprompt = args[0]
     root = tk.Tk()
-    trackwin = CliWindow(root, initialprompt)
+    trackwin = CliWindow(root, args[0] if len(args) > 0 else "")
     root.mainloop()
 
