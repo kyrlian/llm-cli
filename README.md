@@ -23,16 +23,21 @@ Ressources:
 ## Install
 
 Create a .env file with your HUGGINGFACEHUB_API_TOKEN
-```
+```sh
 HUGGINGFACEHUB_API_TOKEN="hf_xxxxX"
 ```
 
 Install requirements
-```
+```sh
 pip install -r requirements
 ```
 
 ## Run
-```
+```sh
 python.exe .\hgcli.py
+```
+
+## Use in REPL
+```sh
+ipython.exe .\init_repl.py
 ```
