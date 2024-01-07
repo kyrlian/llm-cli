@@ -3,12 +3,13 @@
 Display a prompt for the user to type text, and when the user types enter, send the text to hg inference api, and display the result. 
 Loop until the user types 'quit' or 'exit' or 'bye'.
 
-- [command line version: hgcli.py](./hgcli.py)
-- [tkinter version to edit full prompt](./hgcli-tkinter.py) (requires tkinter)
-- [curses version to edit full prompt](./hgcli-curses.py)
+- [command line version: hgcli.py](./cli_simple.py)
+- [tkinter version to edit full prompt](./cli_tkinter.py) (requires tkinter)
+- [curses version to edit full prompt](./cli_curses.py)
+- [textual version to edit full prompt](./cli_textual.py)
 - [run stable LM localy](./test/test-local-stable-lm.py)
 - [various tests](./test/)
-- 
+
 Old:
 - [old version using requests](./old/hgcli-requests.py)
 - [openAI API cli using requests](./old/openaicli.py)
