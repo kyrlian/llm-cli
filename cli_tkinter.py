@@ -3,10 +3,12 @@
 import sys
 import tkinter as tk
 from engine_hg import hg_engine
+from engine_tinyllama import tinyllama_engine
 
 class CliWindow(tk.Frame):
     def __init__(self, parent, initialprompt):
-        self.model = hg_engine()
+        # self.model = hg_engine()
+        self.model = tinyllama_engine()
         tk.Frame.__init__(self, parent)
         self.textboxprompt = tk.Text(self, width=50, height=5)
         self.textboxprompt.pack(expand=True, fill=tk.BOTH)
