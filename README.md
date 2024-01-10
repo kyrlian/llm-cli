@@ -11,7 +11,7 @@ Loop until the user types 'quit' or 'exit' or 'bye'.
 
 ## Engines
 - [HuggingFace Hub](./engine_hg.py)
-- [Local TinyLlama](./engine_tinyllama.py)
+- [Local TinyLlama](./engine_local.py)
 - 
 ## Tests
 - [run stable LM localy](./test/test-local-stable-lm.py)
@@ -27,6 +27,15 @@ Loop until the user types 'quit' or 'exit' or 'bye'.
 Install requirements
 ```sh
 pip install -r requirements
+```
+
+To use llama.cpp see [llama-cpp-python](https://llama-cpp-python.readthedocs.io/en/latest/) and [llama.cpp](https://github.com/ggerganov/llama.cpp#build). For exemple for NVIDIA CUDA:
+Install [CUDA toolkit](https://developer.nvidia.com/cuda-downloads) with `CUDA/Runtime/Librairies`, `CUDA/Development/Compiler` and `CUDA/Development/Visual Studio Integration`, and run:
+
+```sh
+$env:CMAKE_ARGS = "-DLLAMA_CUBLAS=ON"
+$env:CMAKE_GENERATOR_TOOLSET="cuda=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3"
+pip install llama-cpp-python  --upgrade --force-reinstall --no-cache-dir
 ```
 
 To use Hugging face inference, create a .env file with your HUGGINGFACEHUB_API_TOKEN
