@@ -3,11 +3,11 @@
 import sys
 import curses
 from curses.textpad import Textbox
-from engine_hg import hg_engine
+from engine_hg import engine_hg
 
 def cursesmain(stdscr, firstinput):
     #init llm
-    engine = hg_engine("bigscience/bloom")
+    engine = engine_hg("bigscience/bloom")
     curses.use_default_colors()
     screenwin = stdscr.derwin(0, 0)
     screenwin.border()

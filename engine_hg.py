@@ -3,7 +3,7 @@ from langchain.llms import HuggingFaceHub
 import os
 from dotenv import load_dotenv, find_dotenv
 
-class hg_engine():
+class engine_hg():
     def __init__(self, model_id="bigscience/bloom"):  
         load_dotenv(find_dotenv())  # take environment variables from .env.
         assert os.environ.get("HUGGINGFACEHUB_API_TOKEN") is not None
@@ -12,7 +12,7 @@ class hg_engine():
 
     def generate(self, input):
         generated_text = self.model(input)
-        print(generated_text)
+        # print(f"DEBUG:hg_engine:generate:generated_text: '{generated_text}'")
         return generated_text
 
     def getinfo(self):

@@ -1,11 +1,10 @@
 #!pyhon3
 
 import sys
-from engine_hg import hg_engine
-
+from engine_hg import engine_hg
 def main(firstinput):
     # init llm
-    engine = hg_engine()
+    engine = engine_hg()
     # input-generate loop
     res = ""
     if firstinput != "":
@@ -18,6 +17,7 @@ def main(firstinput):
             res = ""
             user_input = input("> ").strip()
         res = engine.generate(res + " " + user_input)
+        print(f":{res}")
 
 
 if __name__ == "__main__":

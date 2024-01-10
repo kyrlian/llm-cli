@@ -5,8 +5,7 @@
 import sys
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Log
-# from engine_hg import hg_engine
-from engine_tinyllama import tinyllama_engine
+from engine_hg import engine_hg
 
 class InputApp(App):
     def __init__(self, *args, engine, prompt, **kwargs):
@@ -34,7 +33,6 @@ class InputApp(App):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    #engine = hg_engine("bigscience/bloom")
-    engine = tinyllama_engine()
+    engine = engine_hg("bigscience/bloom")
     app = InputApp(engine=engine, prompt=(args[0] if len(args) > 0 else ""))
     app.run()
