@@ -4,7 +4,7 @@ import json
 # Ollama exposes port 11434 by default
 
 
-class engine_ollama:
+class Engine:
     def __init__(self, model_id="llama3", port=11434):
         self.model = model_id
         self.url = f"http://localhost:{port}/api"
@@ -38,6 +38,6 @@ class engine_ollama:
 
 
 if __name__ == "__main__":
-    en = engine_ollama()
-    print("list: "+", ".join(en.list()))
-    print("generate: "+en.generate("Who is obama?"))
+    en = Engine()
+    print("list: " + ", ".join(en.list()))
+    print("generate: " + en.generate("Who is obama?"))

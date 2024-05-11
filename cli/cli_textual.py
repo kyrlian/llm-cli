@@ -5,7 +5,8 @@
 import sys
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Log
-from engine_hg import engine_hg
+from engines.engine_hg import Engine
+
 
 class InputApp(App):
     def __init__(self, *args, engine, prompt, **kwargs):
@@ -31,8 +32,9 @@ class InputApp(App):
     def debug(self, msg):
         self.query_one("#debug", Log).write_line(f"DEBUG:{msg}")
 
+
 if __name__ == "__main__":
     args = sys.argv[1:]
-    engine = engine_hg("bigscience/bloom")
+    engine = Engine("bigscience/bloom")
     app = InputApp(engine=engine, prompt=(args[0] if len(args) > 0 else ""))
     app.run()

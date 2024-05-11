@@ -1,6 +1,6 @@
 import gradio as gr
 from prompts import prompts
-from engine_ollama import engine_ollama
+from engines.engine_ollama import Engine
 
 def build_app(engine, prompts):
     def list_engines():
@@ -77,5 +77,5 @@ def build_app(engine, prompts):
 
 
 if __name__ == "__main__":
-    engine = engine_ollama()
+    engine = Engine()
     build_app(engine, prompts).launch()

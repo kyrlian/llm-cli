@@ -2,11 +2,13 @@
 
 import sys
 import tkinter as tk
-from engine_hg import engine_hg
+# from engines.engine_hg import engine_hg as engine
+from engines.engine_hg import Engine
+
 
 class CliWindow(tk.Frame):
     def __init__(self, parent, initialprompt):
-        self.model = engine_hg()
+        self.model = Engine()
         tk.Frame.__init__(self, parent)
         self.textboxprompt = tk.Text(self, width=50, height=5)
         self.textboxprompt.pack(expand=True, fill=tk.BOTH)
@@ -39,4 +41,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     trackwin = CliWindow(root, args[0] if len(args) > 0 else "")
     root.mainloop()
-
