@@ -12,3 +12,7 @@ class engine_local():
         generated_text = outputs[0]["generated_text"]
         # print(f"DEBUG:local_engine:generate:generated_text: '{generated_text}'")
         return generated_text
+
+if __name__ == "__main__":
+    pipe = engine_local()
+    pipe.generate("Who is obama?")
