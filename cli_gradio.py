@@ -24,32 +24,31 @@ def build_app(engine, prompts):
     # https://www.gradio.app/guides/blocks-and-event-listeners#blocks-structure
     with gr.Blocks() as myapp:
         with gr.Row():
-            with gr.Column(scale=1):
-                gr.Markdown("# LLM Assistant")
-                model_drop = gr.Dropdown(
-                    choices=list_engines(),
-                    value=list_engines()[0],
-                    label="Model",
-                    show_label=False,
-                )
-                lang_drop = gr.Dropdown(
-                    choices=list(prompts.keys()),
-                    value=default_lang,
-                    label="Language",
-                    show_label=False,
-                )
-                instructions_drop = gr.Dropdown(
-                    choices=list(prompts[default_lang].keys()),
-                    value=default_instruction,
-                    label="Instructions",
-                    show_label=False,
-                )
-            # https://www.gradio.app/guides/controlling-layout#rows
-            with gr.Column(scale=5):
-                instruction_box = gr.Textbox(value = prompts[default_lang][default_instruction] , label="instruction - use {payload} {result} placeholders")
-                payload_box = gr.Textbox(label="Payload - {payload}")
-                result_box = gr.Textbox(label="Result - {result}")
-                generate_btn = gr.Button("Generate")
+            gr.Markdown("# LLM Assistant")
+            model_drop = gr.Dropdown(
+                choices=list_engines(),
+                value=list_engines()[0],
+                label="Model",
+                show_label=False,
+            )
+            lang_drop = gr.Dropdown(
+                choices=list(prompts.keys()),
+                value=default_lang,
+                label="Language",
+                show_label=False,
+            )
+            instructions_drop = gr.Dropdown(
+                choices=list(prompts[default_lang].keys()),
+                value=default_instruction,
+                label="Instructions",
+                show_label=False,
+            )
+        # https://www.gradio.app/guides/controlling-layout#rows
+        with gr.Column():
+            instruction_box = gr.Textbox(value = prompts[default_lang][default_instruction] , label="instruction - use {payload} {result} placeholders")
+            payload_box = gr.Textbox(label="Payload - {payload}")
+            generate_btn = gr.Button("Generate")
+            result_box = gr.Textbox(label="Result - {result}")
         # match button - function
         lang_drop.select(
             fn=change_lang,
