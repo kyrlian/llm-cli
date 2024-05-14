@@ -27,8 +27,8 @@ Loop until the user types 'quit' or 'exit' or 'bye'.
 - [textual version to edit full prompt](./cli_textual.py) - requires [textual](https://github.com/Textualize/textual)
 
 ## Graphical UIs
-- [tkinter version to edit full prompt](./cli_tkinter.py) - requires [tkinter](https://docs.python.org/3/library/tkinter.html)
-- [gradio version with prompt suggestions](./cli_gradio.py) - requires [gradio](https://www.gradio.app/)
+- [tkinter version to edit full prompt](./gui_tkinter.py) - requires [tkinter](https://docs.python.org/3/library/tkinter.html)
+- [gradio version with prompt suggestions](./gui_gradio.py) - requires [gradio](https://www.gradio.app/)
 
 ## Engines
 - [Online Hugging Face inference](./engine_hg.py) - requires [an hugging Face token](#hugging-face)
