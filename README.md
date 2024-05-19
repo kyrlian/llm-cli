@@ -22,20 +22,21 @@
 Display a prompt for the user to type text, and when the user types enter, send the text to hg inference api, and display the result. 
 Loop until the user types 'quit' or 'exit' or 'bye'.
 
-- [command line version: cli_simple.py](./cli_simple.py)
-- [curses version to edit full prompt](./cli_curses.py) - requires [windows-curses](https://pypi.org/project/windows-curses/) on windows
-- [textual version to edit full prompt](./cli_textual.py) - requires [textual](https://github.com/Textualize/textual)
+- [Command line version: cli_simple.py](./cli/cli_simple.py)
+- [Curses version to edit full prompt](./cli/cli_curses.py) - requires [windows-curses](https://pypi.org/project/windows-curses/) on windows
+- [Textual version to edit full prompt](./cli/cli_textual.py) - requires [textual](https://github.com/Textualize/textual)
 
 ## Graphical UIs
-- [tkinter version to edit full prompt](./gui_tkinter.py) - requires [tkinter](https://docs.python.org/3/library/tkinter.html)
-- [gradio version with prompt suggestions](./gui_gradio.py) - requires [gradio](https://www.gradio.app/)
-- [basic dash version with prompt suggestions](./gui_dash.py) - requires [dash](https://dash.plotly.com/)
+- [Tkinter version to edit full prompt](./cli/gui_tkinter.py) - requires [tkinter](https://docs.python.org/3/library/tkinter.html)
+- [Gradio version with prompt suggestions](./cli/gui_gradio.py) - requires [gradio](https://www.gradio.app/)
+- [Basic dash version with prompt suggestions](./cli/gui_dash.py) - requires [dash](https://dash.plotly.com/)
 
 ## Engines
-- [Online Hugging Face inference](./engine_hg.py) - requires [an hugging Face token](#hugging-face)
-- [Local with Ollama](./engine_ollama.py) - requires [ollama](#ollama)
-- [Local with Hugging Face pipeline and TinyLlama](./engine_pipeline.py) - requires [pytorch](https://pytorch.org/get-started/locally/)
-- [Local with LlamaCpp and TinyLlama](./engine_local.py) - requires [llama.cpp](#llamacpp)
+- [Online Hugging Face inference](./cli/engines/engine_hg.py) - requires [an hugging Face token](#hugging-face)
+- [Local with Ollama](./cli/engines/engine_ollama.py) - requires [ollama](#ollama)
+- [Local with InstructLab](./cli/engines/engine_instructlab.py) - requires [InstructLab](https://github.com/instructlab/instructlab)
+- [Local with Hugging Face pipeline and TinyLlama](./cli/engines/engine_pipeline.py) - requires [pytorch](https://pytorch.org/get-started/locally/)
+- [Local with LlamaCpp and TinyLlama](./cli/engines/engine_llamacpp.py) - requires [llama.cpp](#llamacpp)
  
 
 ## Install
@@ -61,7 +62,7 @@ ollama pull llama3
 ```
 
 ### Curses on windows
-To use [cli_curses.py] on windows, you'll need [windows-curses](https://pypi.org/project/windows-curses/)
+To use [cli_curses.py](./cli/cli_curses.py) on windows, you'll need [windows-curses](https://pypi.org/project/windows-curses/)
 
 ```sh
 pip install windows-curses
@@ -70,7 +71,7 @@ pip install windows-curses
 
 ### llama.cpp
 To use llama.cpp see [llama-cpp-python](https://llama-cpp-python.readthedocs.io/en/latest/) and [llama.cpp](https://github.com/ggerganov/llama.cpp#build). For exemple for NVIDIA CUDA:
-Install [CUDA toolkit](https://developer.nvidia.com/cuda-downloads) with `CUDA/Runtime/Librairies`, `CUDA/Development/Compiler` and `CUDA/Development/Visual Studio Integration`, and run:
+Install [CUDA toolkit](https://developer.nvidia.com/cuda-downloads) with `CUDA/Runtime/Librairies`, `CUDA/Development/Compiler` and `CUDA/Development/Visual Studio Integration`, then run:
 
 ```sh
 $env:CMAKE_ARGS = "-DLLAMA_CUBLAS=ON"
@@ -104,7 +105,7 @@ ipython.exe .\cli\repl.py
 ## Old
 - [old version using requests](./old/hgcli-requests.py)
 - [openAI API cli using requests](./old/openaicli.py)
-- 
+
 ## Ressources
 - [langchain - getting started](https://python.langchain.com/en/latest/modules/models/llms/getting_started.html)
 - [HuggingFace text-generation models](https://huggingface.co/models?pipeline_tag=text-generation)
