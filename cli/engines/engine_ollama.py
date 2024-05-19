@@ -1,5 +1,4 @@
 import requests
-import json
 
 # Ollama exposes port 11434 by default
 
@@ -11,11 +10,10 @@ class Engine:
         self.headers = {"Content-Type": "application/json"}
 
     def list(self):
-        response = requests.get(self.url + "/tags", headers=self.headers)
+        response = requests.get(f"{self.url}/tags", headers=self.headers)
         if response.status_code == 200:
-            response_txt = response.text
-            data = json.loads(response_txt)
-            models = data["models"]
+            response_json = response.json()
+            models = response_json["models"]
             modelnames = [m["name"] for m in models]
             return modelnames
         else:
@@ -25,13 +23,10 @@ class Engine:
         if model is None:
             model = self.model
         data = {"model": model, "stream": False, "prompt": prompt}
-        response = requests.post(
-            self.url + "/generate", headers=self.headers, data=json.dumps(data)
-        )
+        response = requests.post(f"{self.url}/generate", headers=self.headers, json=data)
         if response.status_code == 200:
-            response_txt = response.text
-            data = json.loads(response_txt)
-            actual_response = data["response"]
+            response_json = response.json()
+            actual_response = response_json["response"]
             return actual_response
         else:
             print("Error:", response.status_code, response.text)
