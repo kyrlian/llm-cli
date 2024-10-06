@@ -5,13 +5,14 @@
 - [Text CLIs](#text-clis)
 - [Graphical UIs](#graphical-uis)
 - [Engines](#engines)
-- [Install](#install)
+- [Quickstart with uv and ollama](#quickstart-with-uv-and-ollama)
+  - [Install directly from GitHub](#install-directly-from-github)
+- [Advanced](#advanced)
   - [Hugging Face](#hugging-face)
   - [Ollama](#ollama)
   - [Curses on windows](#curses-on-windows)
   - [llama.cpp](#llamacpp)
 - [Run](#run)
-- [Use in REPL](#use-in-repl)
 - [Tests](#tests)
 - [Old](#old)
 - [Ressources](#ressources)
@@ -32,19 +33,26 @@ Loop until the user types 'quit' or 'exit' or 'bye'.
 - [Basic dash version with prompt suggestions](./cli/gui_dash.py) - requires [dash](https://dash.plotly.com/)
 
 ## Engines
-- [Online Hugging Face inference](./cli/engines/engine_hg.py) - requires [an hugging Face token](#hugging-face)
 - [Local with Ollama](./cli/engines/engine_ollama.py) - requires [ollama](#ollama)
+- [Online Hugging Face inference](./cli/engines/engine_hg.py) - requires [an hugging Face token](#hugging-face)
 - [Local with InstructLab](./cli/engines/engine_instructlab.py) - requires [InstructLab](https://github.com/instructlab/instructlab)
 - [Local with Hugging Face pipeline and TinyLlama](./cli/engines/engine_pipeline.py) - requires [pytorch](https://pytorch.org/get-started/locally/)
 - [Local with LlamaCpp and TinyLlama](./cli/engines/engine_llamacpp.py) - requires [llama.cpp](#llamacpp)
  
 
-## Install
+## Quickstart with uv and ollama
 
-Install requirements
+Get [uv](https://docs.astral.sh/uv/) and [ollama](https://ollama.com/)
+
+### Install directly from GitHub
+
 ```sh
-pip install -r requirements
+uv tool install git+https://github.com/kyrlian//mp3-player-tui.git
 ```
+
+run with `llmcli` (textual) or `llmgui` (gradio)
+
+## Advanced
 
 ### Hugging Face 
 To use Hugging Face inference, create a [hugging face token](https://huggingface.co/settings/tokens), then create a .env file with your HUGGINGFACEHUB_API_TOKEN:
@@ -68,7 +76,6 @@ To use [cli_curses.py](./cli/cli_curses.py) on windows, you'll need [windows-cur
 pip install windows-curses
 ```
 
-
 ### llama.cpp
 To use llama.cpp see [llama-cpp-python](https://llama-cpp-python.readthedocs.io/en/latest/) and [llama.cpp](https://github.com/ggerganov/llama.cpp#build). For exemple for NVIDIA CUDA:
 Install [CUDA toolkit](https://developer.nvidia.com/cuda-downloads) with `CUDA/Runtime/Librairies`, `CUDA/Development/Compiler` and `CUDA/Development/Visual Studio Integration`, then run:
@@ -84,15 +91,15 @@ pip install llama-cpp-python  --upgrade --force-reinstall --no-cache-dir
 All cli can be run directly
 
 ```sh
-python.exe .\cli\cli_curses.py
+uv run .\cli\cli_curses.py
 ```
 
 All engines can be run directly to test them
 ```sh
-python.exe .\cli\engines\engine_ollama.py
+uv run .\cli\engines\engine_ollama.py
 ```
 
-## Use in REPL
+Use in REPL with ipython
 ```sh
 ipython.exe .\cli\repl.py
 ```
@@ -117,3 +124,4 @@ ipython.exe .\cli\repl.py
 - [tkinter](https://docs.python.org/3/library/tkinter.html)
 - [Textual](https://textual.textualize.io/)
 - [Llama.cpp](https://github.com/ggerganov/llama.cpp)
+- [uv](https://docs.astral.sh/uv/)

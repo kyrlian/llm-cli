@@ -1,10 +1,10 @@
 #!pyhon3
 
 import sys
-from engines.engine_hg import Engine
+from llm_cli.engines.engine_hg import Engine
 
 
-def main(firstinput):
+def simple_cli(firstinput):
     # init llm
     engine = Engine()
     # input-generate loop
@@ -21,7 +21,9 @@ def main(firstinput):
         res = engine.generate(res + " " + user_input)
         print(f":{res}")
 
+def main():
+    args = sys.argv[1:]
+    simple_cli(args[0] if len(args) > 0 else "")
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    main(args[0] if len(args) > 0 else "")
+    main()

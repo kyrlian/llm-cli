@@ -1,6 +1,6 @@
 import gradio as gr
-from prompts import prompts
-from engines.engine_ollama import Engine
+from llm_cli.prompts import prompts
+from llm_cli.engines.engine_ollama import Engine
 
 def build_app(engine, prompts):
     def list_engines():
@@ -76,6 +76,9 @@ def build_app(engine, prompts):
     return myapp
 
 
-if __name__ == "__main__":
+def main():
     engine = Engine()
     build_app(engine, prompts).launch()
+
+if __name__ == "__main__":
+    main()

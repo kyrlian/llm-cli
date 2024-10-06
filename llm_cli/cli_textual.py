@@ -5,7 +5,7 @@
 import sys
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Log
-from engines.engine_hg import Engine
+from llm_cli.engines.engine_ollama import Engine
 
 
 class InputApp(App):
@@ -32,9 +32,11 @@ class InputApp(App):
     def debug(self, msg):
         self.query_one("#debug", Log).write_line(f"DEBUG:{msg}")
 
-
-if __name__ == "__main__":
+def main():
     args = sys.argv[1:]
-    engine = Engine("bigscience/bloom")
+    engine = Engine("llama3.1")
     app = InputApp(engine=engine, prompt=(args[0] if len(args) > 0 else ""))
     app.run()
+
+if __name__ == "__main__":
+    main()

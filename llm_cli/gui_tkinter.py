@@ -3,7 +3,7 @@
 import sys
 import tkinter as tk
 # from engines.engine_hg import engine_hg as engine
-from engines.engine_hg import Engine
+from llm_cli.engines.engine_hg import Engine
 
 
 class CliWindow(tk.Frame):
@@ -36,8 +36,12 @@ class CliWindow(tk.Frame):
             self.textboxprompt.insert(tk.END, "\n" + answer)
 
 
-if __name__ == "__main__":
+def main():
     args = sys.argv[1:]
     root = tk.Tk()
-    trackwin = CliWindow(root, args[0] if len(args) > 0 else "")
+    CliWindow(root, args[0] if len(args) > 0 else "")
     root.mainloop()
+
+if __name__ == "__main__":
+    main()
+

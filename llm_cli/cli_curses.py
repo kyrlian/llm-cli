@@ -3,10 +3,10 @@
 import sys
 import curses
 from curses.textpad import Textbox
-from engines.engine_hg import Engine
+from llm_cli.engines.engine_hg import Engine
 
 
-def cursesmain(stdscr, firstinput):
+def curses_main(stdscr, firstinput):
     # init llm
     engine = Engine("bigscience/bloom")
     curses.use_default_colors()
@@ -45,6 +45,10 @@ def cursesmain(stdscr, firstinput):
         generatedprompt = engine.generate(editedprompt)
 
 
-if __name__ == "__main__":
+def main():
     args = sys.argv[1:]
-    curses.wrapper(cursesmain, args[0] if len(args) > 0 else "")
+    curses.wrapper(curses_main, args[0] if len(args) > 0 else "")
+
+
+if __name__ == "__main__":
+    main()

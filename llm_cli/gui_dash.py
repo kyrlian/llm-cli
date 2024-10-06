@@ -1,6 +1,6 @@
 from dash import Dash, dcc, html, callback, Output, Input
-from prompts import prompts
-from engines.engine_ollama import Engine
+from llm_cli.prompts import prompts
+from llm_cli.engines.engine_ollama import Engine
 
 def buildapp(engine, prompts):
     app = Dash()
@@ -51,6 +51,10 @@ def buildapp(engine, prompts):
     return app
 
 
-if __name__ == "__main__":
+
+def main():
     engine = Engine()
     buildapp(engine,prompts).run(debug=True)
+
+if __name__ == "__main__":
+    main()
