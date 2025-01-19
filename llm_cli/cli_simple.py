@@ -12,7 +12,7 @@ def simple_cli(firstinput):
     if firstinput != "":
         res = engine.generate(firstinput)
     while True:
-        user_input = input(f"{engine.model_id}> ").strip()
+        user_input = input(f"{engine.model}> ").strip()
         if user_input in ["quit", "exit", "bye"]:
             break
         if user_input in ["reset"]:

@@ -13,7 +13,7 @@ class Engine:
         self.url = f"http://localhost:{port}/v1"
         self.headers = {"Content-Type": "application/json"}
 
-    def list(self):
+    def list(self)->list:
         response = requests.get(f"{self.url}/models", headers=self.headers)
         if response.status_code == 200:
             response_json = response.json()
@@ -22,6 +22,7 @@ class Engine:
             return modelnames
         else:
             print("Error:", response.status_code, response.text)
+            return []
 
     def generate(self, prompt, model=None):
         if model is None:
@@ -49,5 +50,5 @@ class Engine:
 
 if __name__ == "__main__":
     en = Engine()
-    print("list: " + ", ".join(en.list()))
-    print("generate: " + en.generate("Who is obama?"))
+    print("list: " , ", ".join(en.list()))
+    print("generate: " , en.generate("Who is obama?"))

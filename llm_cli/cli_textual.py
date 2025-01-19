@@ -19,17 +19,17 @@ class InputApp(App):
         yield Log(id="debug")
 
     def on_ready(self) -> None:
-        self.debug("Ready!")
+        self.write_debug("Ready!")
 
     def on_input_submitted(self, message: Input.Submitted):
         if message.input.id == "input":
             prompt = message.value
-            self.debug(f"prompt: {prompt}")
+            self.write_debug(f"prompt: {prompt}")
             answer = self.engine.generate(prompt)  # call LLM
-            self.debug(f"answer: {answer}")
+            self.write_debug(f"answer: {answer}")
             self.query_one("#input", Input).insert_text_at_cursor(" " + answer)
 
-    def debug(self, msg):
+    def write_debug(self, msg):
         self.query_one("#debug", Log).write_line(f"DEBUG:{msg}")
 
 def main():

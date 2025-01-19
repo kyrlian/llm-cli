@@ -62,7 +62,7 @@ class Engine:
                 yield generated
         else:
             yield ""
-            
+
 
     def generate_response(self, prompt, model=None, temperature=None, max_tokens=None, stop=[]):
         if model is None:
@@ -85,17 +85,17 @@ class Engine:
             actual_response = response_json["response"]
             return actual_response
         return None
-    
+
     def generate(self, prompt, model=None, temperature=None, max_tokens=None, stop=[], stream=False, cumulative= False):
         if stream:
             return self.generate_stream(prompt, model, temperature, max_tokens, stop, cumulative)
             # for g in gen:
-            #     yield g 
-        else:       
+            #     yield g
+        else:
             return self.generate_text(prompt, model, temperature, max_tokens, stop)
 
 
 if __name__ == "__main__":
     en = Engine()
-    print("list: " + ", ".join(en.list()))
-    print("generate: " + en.generate("Who is obama?"))
+    print("list: " , ", ".join(en.list()))
+    print("generate: " , en.generate("Who is obama?"))
